@@ -8,7 +8,6 @@ char tone = 0;
 char on = 0;
 char dimLights = 0;
 char dimLevel = 0;
-char button = 0;
 
 void turn_on(){
   red_on = 1;
@@ -26,17 +25,17 @@ void turn_off(){
   led_update();
 }
 
-void dimBothLights(){
+void dim_machine(){
   if(dimLights){
     static int state = 1;
     switch(state){
     case 1:
-      dimLow();
+      dim25();
       dimLevel = 0;
       state++;
       break;
     case 2:
-      dimHigh();
+      dim75();
       dimLevel = 1;
       state = 1;
       break;
@@ -44,7 +43,7 @@ void dimBothLights(){
   }
 }
 
-void dimLow(){
+void dim25(){
   if(dimLights){
     if(!dimLevel){
       static int state = 1;
@@ -62,7 +61,7 @@ void dimLow(){
   }
 }
 
-void dimHigh(){
+void dim75(){
   if(dimLights){
     if(dimLevel){
       static int state = 1;
@@ -110,13 +109,11 @@ void state_advance(){
   if(tone){
     state++;
       switch(state){
-      case 0: buzzer_set_period(3432); break;
-      case 1: buzzer_set_period(4575); break;
-      case 2: buzzer_set_period(5432); break;
-      case 3: buzzer_set_period(4234); break;
-      case 4: buzzer_set_period(3234); break;
-      case 5: buzzer_set_period(6522); break;
-      case 6: state = 0; break;
+      case 0: buzzer_set_period(7124); break;
+      case 1: buzzer_set_period(4992); break;
+      case 2: buzzer_set_period(4545); break;
+      case 3: buzzer_set_period(5714); break;
+      case 4: state = 0; break;
       }
   }
   else{

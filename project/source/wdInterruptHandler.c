@@ -13,12 +13,12 @@ __interrupt_vec(WDT_VECTOR) WDT(){
     blink_count = 0;
   }
   if(++blink_light == 1){
-    dim25();
-    dim75();
+    dimLow();
+    dimHigh();
     blink_light = 0;
   }
   if(++change_dim == 125){
-    dim_machine();
+    dimBothLights();
     change_dim = 0;
   }
 }
